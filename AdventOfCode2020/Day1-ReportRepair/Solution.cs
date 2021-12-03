@@ -2,15 +2,15 @@
 
 var expenses = File.ReadAllLines("input.txt");
 
-var expensesDictionary = expenses.Select(x => Int32.Parse(x)).ToDictionary<int, int>(x => x);
+var expensesHashset = expenses.Select(x => Int32.Parse(x)).ToHashSet<int>();
 
 // Solution to the first part
 long result = 0;
-foreach (var (key, value) in expensesDictionary)
+foreach (var value in expensesHashset)
 {
-    if (expensesDictionary.ContainsKey(2020 - key))
+    if (expensesHashset.Contains(2020 - value))
     {
-        result = (2020 - key) * key;
+        result = (2020 - value) * value;
         break;
     }
 }
@@ -20,20 +20,20 @@ Console.WriteLine(result);
 // Solution to the second part
 result = 0;
 
-for(int i = 0;i < expensesDictionary.Count; i++)
+for(int i = 0; i < expensesHashset.Count; i++)
 {
-    KeyValuePair<int, int> kvp = expensesDictionary.ElementAt(i);
+    int value = expensesHashset.ElementAt(i);
 
     bool found = false;
-    for (int j = i + 1; j < expensesDictionary.Count; j++)
+    for (int j = i + 1; j < expensesHashset.Count; j++)
     {
-        KeyValuePair<int, int> kvp2 = expensesDictionary.ElementAt(j);
+        int value2 = expensesHashset.ElementAt(j);
 
-        int remainder = 2020 - kvp.Key;
+        int remainder = 2020 - value;
 
-        if (expensesDictionary.ContainsKey(remainder - kvp2.Key))
+        if (expensesHashset.Contains(remainder - value2))
         {
-            result = kvp.Key * (remainder - kvp2.Key) * kvp2.Key;
+            result = value * (remainder - value2) * value2 ;
             found = true;
             break;
         }
