@@ -19,6 +19,7 @@ Console.WriteLine(numberOfTimesDepthIncreases);
 
 
 int depthIncreaseThreeSum = 0;
+
 // Solution for the second part
 for (int i = 1; i < depthsList.Count() - 2; i++)
 {
