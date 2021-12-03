@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day1-ReportRepair", "Day1-ReportRepair\Day1-ReportRepair.csproj", "{5DF33659-823C-4FE3-A747-5C7E3E3AA23B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day2-PasswordPhilosophy", "Day2-PasswordPhilosophy\Day2-PasswordPhilosophy.csproj", "{0EE1AC91-7174-43DB-BE3B-284A41C7B0FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5DF33659-823C-4FE3-A747-5C7E3E3AA23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DF33659-823C-4FE3-A747-5C7E3E3AA23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DF33659-823C-4FE3-A747-5C7E3E3AA23B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EE1AC91-7174-43DB-BE3B-284A41C7B0FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EE1AC91-7174-43DB-BE3B-284A41C7B0FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EE1AC91-7174-43DB-BE3B-284A41C7B0FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EE1AC91-7174-43DB-BE3B-284A41C7B0FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
