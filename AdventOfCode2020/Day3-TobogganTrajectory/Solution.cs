@@ -35,11 +35,6 @@ int fiveToOne = GetNumberOfTreesAlongSlope(5, 1);
 int sevenToOne = GetNumberOfTreesAlongSlope(7, 1);
 int oneTotwo = GetNumberOfTreesAlongSlope(1, 2);
 
-Console.WriteLine(oneToOne);
-Console.WriteLine(threeToOne);
-Console.WriteLine(fiveToOne);
-Console.WriteLine(oneTotwo);
-Console.WriteLine(sevenToOne);
 
 long result = oneToOne * threeToOne * fiveToOne * sevenToOne * oneTotwo;
 
