@@ -10,8 +10,12 @@ var bingoNumbers = bingoData[0].Split(",");
 GiantSquidBingo giantSquidBingo = new GiantSquidBingo();
 
 giantSquidBingo.BuildBoards(bingoData);
-// First Part
-giantSquidBingo.RunGame(bingoNumbers, stopAtNthWin: giantSquidBingo.GetNumberOfBoards());
+
+// Solution to the First Part
+giantSquidBingo.RunGame(bingoNumbers); //  First Win
+
+// Solution to the Second Part
+giantSquidBingo.RunGame(bingoNumbers, stopAtNthWin: giantSquidBingo.GetNumberOfBoards()); // Last Win
 
 
 

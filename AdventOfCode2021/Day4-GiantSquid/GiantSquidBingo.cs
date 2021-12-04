@@ -59,7 +59,7 @@ namespace Day4_GiantSquid
             }
         }
 
-        private void PrintResultForFirstWin(int sum, int lastCalled)
+        private void PrintResultForWin(int sum, int lastCalled)
         {
             int result = sum * lastCalled;
 
