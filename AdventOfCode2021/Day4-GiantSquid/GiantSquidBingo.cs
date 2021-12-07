@@ -53,7 +53,7 @@ namespace Day4_GiantSquid
 
                 if(result.Item1 != -1 && result.Item2 != -1)
                 {
-                    PrintResultForFirstWin(result.Item1, result.Item2);
+                    PrintResultForWin(result.Item1, result.Item2);
                     break;
                 }
             }

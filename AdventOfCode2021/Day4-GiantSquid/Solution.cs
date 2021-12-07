@@ -16,7 +16,3 @@ giantSquidBingo.RunGame(bingoNumbers); //  First Win
 
 // Solution to the Second Part
 giantSquidBingo.RunGame(bingoNumbers, stopAtNthWin: giantSquidBingo.GetNumberOfBoards()); // Last Win
-
-
-
-
