@@ -33,7 +33,7 @@ int epsilonRate = Convert.ToInt32(epsilonRateBuilder.ToString(), 2);
 
 long result = gammaRate * epsilonRate;
 
-//Console.WriteLine(result);
+Console.WriteLine(result);
 
 
 // Solution for the second part
