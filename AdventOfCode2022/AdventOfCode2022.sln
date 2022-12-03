@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day1-CalorieCounting", "Day1-CalorieCounting\Day1-CalorieCounting.csproj", "{CEBB79B3-AB36-435E-9DD0-99F68A0DDC5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day1-CalorieCounting", "Day1-CalorieCounting\Day1-CalorieCounting.csproj", "{CEBB79B3-AB36-435E-9DD0-99F68A0DDC5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day2-RockPaperScissors", "Day2-RockPaperScissors\Day2-RockPaperScissors.csproj", "{3D886ACE-4F06-480A-880A-F6D2CACCFD9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{CEBB79B3-AB36-435E-9DD0-99F68A0DDC5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEBB79B3-AB36-435E-9DD0-99F68A0DDC5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEBB79B3-AB36-435E-9DD0-99F68A0DDC5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D886ACE-4F06-480A-880A-F6D2CACCFD9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D886ACE-4F06-480A-880A-F6D2CACCFD9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D886ACE-4F06-480A-880A-F6D2CACCFD9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D886ACE-4F06-480A-880A-F6D2CACCFD9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
