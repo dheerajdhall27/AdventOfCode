@@ -16,7 +16,7 @@ foreach(var assignmentPair in assignmentPairs)
     assignmentPairList.Add(Tuple.Create(assignmentA, assignmentB));
 }
 
-int GetNumberOfOVerlappingPairPartOne()
+int GetNumberOfOverlappingPairPartOne()
 {
     int numberOfOVerlappingPairs = 0;
 
@@ -77,5 +77,5 @@ int GetNumberOfOverlappingPairsPartTwo()
     return numberOfOverlappingPairs;
 }
 
-//Console.WriteLine(GetNumberOfOVerlappingPairPartOne());
+Console.WriteLine(GetNumberOfOverlappingPairPartOne());
 Console.WriteLine(GetNumberOfOverlappingPairsPartTwo());
