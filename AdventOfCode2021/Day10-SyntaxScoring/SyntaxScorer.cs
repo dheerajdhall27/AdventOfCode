@@ -58,7 +58,7 @@ internal class SyntaxScorer
         return score;
     }
 
-    public long GetScoreForIncompleteChunks(List<string> chunks)
+    public long GetMiddleScoreForIncompleteChunks(List<string> chunks)
     {
         var list = new List<long>();
         foreach (var chunk in chunks)

@@ -16,7 +16,7 @@ void SolvePartTwo()
 {
     var syntaxScorer = new SyntaxScorer();
 
-    var score = syntaxScorer.GetScoreForIncompleteChunks(chunks.ToList());
+    var score = syntaxScorer.GetMiddleScoreForIncompleteChunks(chunks.ToList());
 
     Console.WriteLine(score);
 }
