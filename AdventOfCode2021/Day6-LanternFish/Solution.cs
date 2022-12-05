@@ -4,27 +4,27 @@ var internalTimers = File.ReadAllText("input.txt");
 
 var timerList = internalTimers.Split(",").Select(x => Convert.ToInt32(x)).ToList();
 
-SolvePartTwo(timerList.ToArray());
-
-void SolvePartTwo(int[] input)
+void SolvePartOne(List<int> input)
 {
-    long[] fishGeneration = new long[9];
-    foreach (int i in input)
+    for(int i = 0; i < 80; i++)
     {
-        fishGeneration[i]++;
-    }
+        int listSize = input.Count;
 
-    for (int iteration = 0; iteration < 4; iteration++)
-    {
-        long newOnes = fishGeneration[0];
-        for (int i = 1; i < fishGeneration.Length; i++)
+        for(int j = 0;j < listSize;j++)
         {
-            fishGeneration[i - 1] = fishGeneration[i];
-        }
+            if(input[j] == 0)
+            {
+                input.Add(8);
+                input[j] = 6;
+                continue;
+            }
 
-        fishGeneration[8] = newOnes;
-        fishGeneration[6] += newOnes;
+            input[j] -= 1;
+        }
     }
 
-    Console.Write(fishGeneration.Sum());
+    Console.WriteLine(input.Count);
 }
+
+
+SolvePartOne(timerList);

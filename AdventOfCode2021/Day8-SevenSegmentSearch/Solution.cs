@@ -27,7 +27,7 @@ foreach (var values in outputValues)
     }
 }
 
-//Console.WriteLine(totalUniqueValuesInOutput);
+Console.WriteLine(totalUniqueValuesInOutput);
 
 
 // Solution to part 2

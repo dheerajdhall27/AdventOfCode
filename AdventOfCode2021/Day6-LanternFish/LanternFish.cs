@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Day6_LanternFish
+﻿namespace Day6_LanternFish
 {
     public class LanternFish: IEquatable<LanternFish>
     {
