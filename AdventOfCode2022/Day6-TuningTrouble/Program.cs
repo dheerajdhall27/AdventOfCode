@@ -8,7 +8,8 @@ int GetMarkerCharIndexAfterNthindex(int n)
     int index = 0;
     foreach (var character in signal)
     {
-
+        // if character is repeating Remove the character
+        // and all characters before the repeating character
         if(markerDictionary.ContainsKey(character))
         {
             int charIndex = markerDictionary[character];
