@@ -27,20 +27,17 @@ public class ElvenComputer : ITerminalCommands
             throw new InvalidProgramException("The Current Directory cannot be null!");
         }
 
-        if(_directoryDictionary.ContainsKey(directoryName))
-        {
-            return;
-        }
+        string directoryNameWithParent = directoryName + _currentDirectory.directoryName;
 
-        var newDirectory = new DirectoryNode(_currentDirectory, directoryName);
-
-        if (_directoryDictionary.ContainsKey(directoryName))
+        if (_directoryDictionary.ContainsKey(directoryNameWithParent))
         {
             throw new ArgumentException("The Directory already exists!");
         }
 
+        var newDirectory = new DirectoryNode(_currentDirectory, directoryNameWithParent);        
+
         _currentDirectory.directoryNodes.Add(newDirectory);
-        _directoryDictionary.Add(directoryName, newDirectory);
+        _directoryDictionary.Add(directoryNameWithParent, newDirectory);
     }
 
     public void ChangeDirectory(string directoryName)
@@ -50,17 +47,19 @@ public class ElvenComputer : ITerminalCommands
             throw new InvalidProgramException("The Current Directory cannot be null!");
         }
 
-        if(directoryName is ROOT_DIRECTORY)
+        if (directoryName is ROOT_DIRECTORY)
         {
             _currentDirectory = _directoryDictionary[ROOT_DIRECTORY];
             return;
         }
 
-        var directoryToChangeTo = _directoryDictionary[directoryName];
+        string directoryNameWithParent = directoryName + _currentDirectory.directoryName;
+
+        var directoryToChangeTo = _directoryDictionary[directoryNameWithParent];
 
         if(directoryToChangeTo is null)
         {
-            throw new ArgumentException("The Directory Name passed is invalid!", directoryName);
+            throw new ArgumentException("The Directory Name passed is invalid!", directoryNameWithParent);
         }
 
         foreach(var directory in _currentDirectory.directoryNodes)

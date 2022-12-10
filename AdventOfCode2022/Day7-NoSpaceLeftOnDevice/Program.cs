@@ -1,4 +1,6 @@
 ﻿using Day7_NoSpaceLeftOnDevice;
+using System.Drawing;
+using System.IO;
 using System.Text;
 
 var terminalOutput = File.ReadAllLines("input.txt");
@@ -131,6 +133,50 @@ void PrintSumOfDirectoriesWithSizeLessThan(long size)
     Console.WriteLine(totalSum);
 }
 
+void PrintSmallestDirectorySizeToDelete()
+{
+    var directories = elvenComputer.GetDirectoryDictionary();
+
+    long totalSum = 0;
+    foreach (var data in directories["/"].directoryDataDictionary.Values)
+    {
+        totalSum += data;
+    }
+
+    totalSum += GetSumOfAllSubDirectories(directories["/"], 0);
+
+    var unusedSpace = 70000000 - totalSum;
+
+    var directoryFileSizeList = new List<long>();
+    foreach (var directory in directories.Values)
+    {
+        long sum = 0;
+
+        foreach (var data in directory.directoryDataDictionary.Values)
+        {
+            sum += data;
+        }
+
+        long SubDirectorySum = 0;
+        sum += GetSumOfAllSubDirectories(directory, SubDirectorySum);
+
+        directoryFileSizeList.Add(sum);
+    }
+
+    directoryFileSizeList.Sort();
+
+    for(int i = 0; i < directoryFileSizeList.Count; i++)
+    {
+        var space = directoryFileSizeList[i] + unusedSpace;
+
+        if(space >= 30000000)
+        {
+            Console.WriteLine(directoryFileSizeList[i]);
+            break;
+        }
+    }
+}
+
 long GetSumOfAllSubDirectories(DirectoryNode directoryNode, long sum)
 {
     if(directoryNode == null)
@@ -151,6 +197,9 @@ long GetSumOfAllSubDirectories(DirectoryNode directoryNode, long sum)
     return sum;
 }
 
+
+
 BuildCommands();
 ExecuteCommands();
-PrintSumOfDirectoriesWithSizeLessThan(100000);
+//PrintSumOfDirectoriesWithSizeLessThan(100000);
+PrintSmallestDirectorySizeToDelete();
