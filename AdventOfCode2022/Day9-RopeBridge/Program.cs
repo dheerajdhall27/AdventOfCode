@@ -2,18 +2,15 @@
 
 var movementData = File.ReadAllLines("input.txt");
 
-var grid = new int[100, 100];
-
 var positionVisited = new HashSet<Position>();
 
-void MoveHeadAndTail()
+void MoveHeadAndTailForNKnots(int knots)
 {
-    var startingPosition = new Position(grid.GetLength(0) - 1, 0);
+    var movementDictionary = BuildDirectionTuple();
 
-    grid[startingPosition.row, startingPosition.col] = 1;
+    var startingPosition = new Position(0, 0);
 
-    var currentHeadPosition = new Position(startingPosition.row, startingPosition.col);
-    var currentTailPosition = new Position(startingPosition.row, startingPosition.col);
+    var knotList = GetKnotListForNKnots(knots, startingPosition);
 
     foreach (var movement in movementData)
     {
@@ -25,16 +22,16 @@ void MoveHeadAndTail()
         switch(direction)
         {
             case "R":
-                MoveRight(currentHeadPosition, currentTailPosition, distance);
+                MoveKnots(knotList, distance, movementDictionary[direction]);
                 break;
             case "L":
-                MoveLeft(currentHeadPosition, currentTailPosition, distance);
+                MoveKnots(knotList, distance, movementDictionary[direction]);
                 break;
             case "U":
-                MoveUp(currentHeadPosition, currentTailPosition, distance);
+                MoveKnots(knotList, distance, movementDictionary[direction]);
                 break;
             case "D":
-                MoveDown(currentHeadPosition, currentTailPosition, distance);
+                MoveKnots(knotList, distance, movementDictionary[direction]);
                 break;
             default:
                 throw new ArgumentException("Not a valid movement");
@@ -43,99 +40,61 @@ void MoveHeadAndTail()
     }
 }
 
-void MoveRight(Position headPosition, Position tailPosition, int distance)
+List<Position> GetKnotListForNKnots(int knots, Position startingPosition)
+{
+    var knotList = new List<Position>();
+
+    for(int i = 0; i < knots; i++)
+    {
+        knotList.Add(new Position(startingPosition.row, startingPosition.col));
+    }
+
+    return knotList;
+}
+
+void MoveKnots(List<Position> ropeKnots, int distance, (int, int) direction)
 {
     var maxDistance = Math.Sqrt(2);
 
-    for(int i = 1;i <= distance; i++)
+
+    for(int d = 0; d < distance; d++)
     {
-        headPosition.col += 1;
-
-        var subtractionOfX = headPosition.col - tailPosition.col;
-        var subtractionOfY = headPosition.row - tailPosition.row;
-
-        var tailDistanceFromHead = Math.Sqrt(Math.Pow(subtractionOfX, 2) + Math.Pow(subtractionOfY, 2));
-
-        if (tailDistanceFromHead > maxDistance)
+        ropeKnots[0].row += direction.Item1;
+        ropeKnots[0].col += direction.Item2;
+        
+        for (int i = 1; i < ropeKnots.Count; i++)
         {
-            tailPosition.row = headPosition.row;
-            tailPosition.col = headPosition.col - 1;
-        }
+            var subtractionOfCol = ropeKnots[i - 1].col - ropeKnots[i].col;
+            var subtractionOfRow = ropeKnots[i - 1].row - ropeKnots[i].row;
 
-        AddPositionToVisited(tailPosition.row, tailPosition.col);
+            var tailDistanceFromHead = Math.Sqrt(Math.Pow(subtractionOfCol, 2) + Math.Pow(subtractionOfRow, 2));
+
+            if (tailDistanceFromHead > maxDistance)
+            {
+                if (Math.Abs(subtractionOfCol) > Math.Abs(subtractionOfRow))
+                {
+                    ropeKnots[i].row += subtractionOfRow;
+                    ropeKnots[i].col += subtractionOfCol < 0 ? subtractionOfCol + 1 : subtractionOfCol - 1;
+                }
+                else if(Math.Abs(subtractionOfCol) < Math.Abs(subtractionOfRow))
+                {
+                    ropeKnots[i].row += subtractionOfRow < 0 ? subtractionOfRow + 1 : subtractionOfRow - 1;
+                    ropeKnots[i].col += subtractionOfCol;
+                }
+                else
+                {
+                    ropeKnots[i].row += subtractionOfRow < 0 ? subtractionOfRow + 1 : subtractionOfRow - 1;
+                    ropeKnots[i].col += subtractionOfCol < 0 ? subtractionOfCol + 1 : subtractionOfCol - 1;
+                }
+            }
+
+            if (i == ropeKnots.Count - 1)
+            {
+                AddPositionToVisited(ropeKnots[ropeKnots.Count - 1].row, ropeKnots[ropeKnots.Count - 1].col);
+            }
+        }
     }
 }
-
-
-void MoveLeft(Position headPosition, Position tailPosition, int distance)
-{
-    var maxDistance = Math.Sqrt(2);
-
-    for (int i = 1; i <= distance; i++)
-    {
-        headPosition.col -= 1;
-
-        var subtractionOfX = headPosition.col - tailPosition.col;
-        var subtractionOfY = headPosition.row - tailPosition.row;
-
-        var tailDistanceFromHead = Math.Sqrt(Math.Pow(subtractionOfX, 2) + Math.Pow(subtractionOfY, 2));
-
-        if (tailDistanceFromHead > maxDistance)
-        {
-            tailPosition.row = headPosition.row;
-            tailPosition.col = headPosition.col + 1;
-        }
-
-        AddPositionToVisited(tailPosition.row, tailPosition.col);
-    }
-}
-
-void MoveUp(Position headPosition, Position tailPosition, int distance)
-{
-    var maxDistance = Math.Sqrt(2);
-
-    for (int i = 1; i <= distance; i++)
-    {
-        headPosition.row -= 1;
-
-        var subtractionOfX = headPosition.col - tailPosition.col;
-        var subtractionOfY = headPosition.row - tailPosition.row;
-
-        var tailDistanceFromHead = Math.Sqrt(Math.Pow(subtractionOfX, 2) + Math.Pow(subtractionOfY, 2));
-
-        if (tailDistanceFromHead > maxDistance)
-        {
-            tailPosition.col = headPosition.col;
-            tailPosition.row = headPosition.row + 1;
-        }
-
-        AddPositionToVisited(tailPosition.row, tailPosition.col);
-    }
-}
-
-void MoveDown(Position headPosition, Position tailPosition, int distance)
-{
-    var maxDistance = Math.Sqrt(2);
-
-    for (int i = 1; i <= distance; i++)
-    {
-        headPosition.row += 1;
-
-        var subtractionOfX = headPosition.col - tailPosition.col;
-        var subtractionOfY = headPosition.row - tailPosition.row;
-
-        var tailDistanceFromHead = Math.Sqrt(Math.Pow(subtractionOfX, 2) + Math.Pow(subtractionOfY, 2));
-
-        if (tailDistanceFromHead > maxDistance)
-        {
-            tailPosition.col = headPosition.col;
-            tailPosition.row = headPosition.row - 1;
-        }
-
-        AddPositionToVisited(tailPosition.row, tailPosition.col);
-    }
-}
-
 
 void AddPositionToVisited(int row, int col)
 {
@@ -148,5 +107,19 @@ void AddPositionToVisited(int row, int col)
 }
 
 
-MoveHeadAndTail();
+Dictionary<string, (int, int)> BuildDirectionTuple()
+{
+    var movementDictionary = new Dictionary<string, (int, int)>();
+
+    movementDictionary.Add("U", (-1, 0));
+    movementDictionary.Add("D", (1, 0));
+    movementDictionary.Add("R", (0, 1));
+    movementDictionary.Add("L", (0, -1));
+
+    return movementDictionary;
+}
+
+
+BuildDirectionTuple();
+MoveHeadAndTailForNKnots(2);
 Console.WriteLine(positionVisited.Count);
