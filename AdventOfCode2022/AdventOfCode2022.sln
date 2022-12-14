@@ -19,9 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day7-NoSpaceLeftOnDevice", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day8-TreetopTreeHouse", "Day8-TreetopTreeHouse\Day8-TreetopTreeHouse.csproj", "{6532F228-AFC1-4D95-8BEE-A451F382CCC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day9-RopeBridge", "Day9-RopeBridge\Day9-RopeBridge.csproj", "{934447F3-E0E4-4233-9488-45719AACDE7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day9-RopeBridge", "Day9-RopeBridge\Day9-RopeBridge.csproj", "{934447F3-E0E4-4233-9488-45719AACDE7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day10-CathodeRayTube", "Day10-CathodeRayTube\Day10-CathodeRayTube.csproj", "{4BA92FEB-7F71-4A1D-8087-DAD974F31ECB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day10-CathodeRayTube", "Day10-CathodeRayTube\Day10-CathodeRayTube.csproj", "{4BA92FEB-7F71-4A1D-8087-DAD974F31ECB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day11-MonkeyInTheMiddle", "Day11-MonkeyInTheMiddle\Day11-MonkeyInTheMiddle.csproj", "{29B9BD1E-C540-45E4-AFCD-B3EDE5E84C97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{4BA92FEB-7F71-4A1D-8087-DAD974F31ECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BA92FEB-7F71-4A1D-8087-DAD974F31ECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BA92FEB-7F71-4A1D-8087-DAD974F31ECB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29B9BD1E-C540-45E4-AFCD-B3EDE5E84C97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29B9BD1E-C540-45E4-AFCD-B3EDE5E84C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29B9BD1E-C540-45E4-AFCD-B3EDE5E84C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29B9BD1E-C540-45E4-AFCD-B3EDE5E84C97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
